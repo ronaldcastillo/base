@@ -98,8 +98,11 @@ abstract class Model extends Eloquent
             static::saving(function(Model $model)
             {
                 // Return the validation result
+                $validation = $model->validate();
+
                 $model->purge();
-                return $model->validate();
+
+                return true;
             });
         }
 
