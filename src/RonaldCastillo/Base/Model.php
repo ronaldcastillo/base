@@ -25,6 +25,7 @@ abstract class Model extends Eloquent
 {
     use ColumnMap;
     use Validation;
+    use Purge;
     /**
      * Validation errors
      *
@@ -96,7 +97,7 @@ abstract class Model extends Eloquent
             static::saving(function(Model $model)
             {
                 // Return the validation result
-                // $model->purge();
+                $model->purge();
                 return $model->validate();
             });
         }
