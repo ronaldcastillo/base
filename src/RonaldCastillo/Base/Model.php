@@ -9,6 +9,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Validation\Validator;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
+use RonaldCastillo\Base\Behaviors\Purge;
 use RonaldCastillo\Base\Behaviors\ColumnMap;
 use RonaldCastillo\Base\Behaviors\Validation;
 
