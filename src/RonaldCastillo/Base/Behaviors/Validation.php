@@ -4,6 +4,9 @@
  * @copyright Copyright (c) 2013 Ronald Castillo. (http://github.com/ronaldcastillo)
  */
 namespace RonaldCastillo\Base\Behaviors;
+
+use Illuminate\Support\MessageBag;
+
 /**
  * Validation trait
  * 
@@ -64,5 +67,27 @@ trait Validation
     public function errors()
     {
         return $this->errors;
+    }
+}
+
+class ValidationException extends \RuntimeException
+{
+
+    /**
+     * @var MessageBag
+     */
+    protected $validationMessages;
+
+    public function __construct(MessageBag $validationMessages, $message, $code = 0, $previousException = null)
+    {
+        parent::__construct($message, $code, $previousException);
+    }
+
+    /**
+     * @return MessageBag
+     */
+    public function getValidationMessages()
+    {
+        return $this->validationMessages;
     }
 }
